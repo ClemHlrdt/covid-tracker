@@ -1,0 +1,28 @@
+.btn {
+  @apply px-4 py-2 mr-4 font-bold rounded-lg disabled:opacity-70 disabled:cursor-not-allowed;
+}
+/* Types */
+.btn-primary {
+  @apply text-white bg-blue-500 hover:bg-blue-700;
+}
+.btn-secondary {
+  @apply text-gray-700 border border-gray-300 hover:bg-gray-700;
+}
+.btn-success {
+  @apply text-white bg-green-500 hover:bg-green-700;
+}
+
+.btn-danger {
+  @apply text-white bg-red-500 hover:bg-red-700;
+}
+
+/* Sizes */
+.btn-xs {
+  @apply text-xs;
+}
+.btn-md {
+  @apply text-base;
+}
+.btn-xl {
+  @apply text-xl;
+}
