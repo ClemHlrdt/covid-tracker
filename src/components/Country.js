@@ -9,7 +9,6 @@ import StatList from "./StatList";
 import dayjs from "dayjs";
 import { numberWithSpaces } from "../utilities/numberUtils";
 
-import "react-calendar/dist/Calendar.css";
 import NoData from "./UI/NoData/NoData";
 export default function Country() {
   const { country } = useParams();

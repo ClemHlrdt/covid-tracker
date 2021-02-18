@@ -8,8 +8,6 @@ import Spinner from "./UI/Spinner/Spinner";
 import Button from "./UI/Button/Button";
 import StatList from "./StatList";
 
-import "react-calendar/dist/Calendar.css";
-
 export default function Global() {
   const dispatch = useDispatch();
   // const countries = useSelector((state) => state.tracker.countries);
