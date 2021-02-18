@@ -14,7 +14,7 @@ function App() {
     <div className="relative h-screen">
       <Router>
         <Navbar />
-        <main className="container h-full px-10 mx-auto mt-20">
+        <main className="h-full mx-auto mt-16">
           <Switch>
             <Route path="/" exact>
               <Global />
