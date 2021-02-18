@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchHistory } from "../redux/actions/trackerActions";
 import dayjs from "dayjs";
@@ -7,8 +7,11 @@ import { Calendar, Modal } from "react-rainbow-components";
 import Spinner from "./UI/Spinner/Spinner";
 import Button from "./UI/Button/Button";
 import StatList from "./StatList";
+import ScrollTop from "./UI/ScrollTop";
+import classes from "./Global.module.css";
 
 export default function Global() {
+  let resultsRef = useRef();
   const dispatch = useDispatch();
   // const countries = useSelector((state) => state.tracker.countries);
   const { history } = useSelector((state) => state.tracker);
@@ -17,6 +20,23 @@ export default function Global() {
   const [date, setDate] = useState(new Date());
   // const [country, setCountry] = useState("All");
   const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      console.log("fetching...");
+      console.log(dayjs().format("HH:mm:ss"));
+      let day = date;
+      if (!day) {
+        day = dayjs().format("YYYY-MM-DD");
+      }
+      const reportDay = formatDateToYearMonthDay(day);
+      dispatch(fetchHistory("All", reportDay));
+    }, 600000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
 
   useEffect(() => {
     let day = date;
@@ -34,34 +54,46 @@ export default function Global() {
   const handleCalendarClick = (value) => {
     setDate(value);
     setIsOpen(false);
+    window.scrollTo({
+      behavior: "smooth",
+      top: resultsRef.current.offsetTop,
+    });
   };
 
   return (
-    <div className="mx-auto space-y-8 text-center bg-white">
-      <h1 className="max-w-sm p-4 mx-auto mt-5 text-5xl font-light border-b-2 border-gray-700 font-display">
-        Global Stats for COVID-19
-      </h1>
-      <p className="text-gray-600">
-        The statistics are updated every 15 minutes. Last updated at{" "}
-        {dayjs(history.time).format("HH:mm")}
-      </p>
-      <Modal
-        isOpen={isOpen}
-        onRequestClose={() => setIsOpen(false)}
-        style={{ padding: "30px" }}
+    <main className="mx-auto">
+      <div
+        className={`${classes.jumbotron} flex flex-col items-center justify-center px-12 space-y-8 text-center text-white bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500`}
       >
-        <Calendar
-          value={date}
-          onChange={(value) => handleCalendarClick(value)}
-          minDate={new Date(2020, 2, 21)}
-        />
-      </Modal>
-      <Button size="md" type="danger" click={() => setIsOpen(!isOpen)}>
-        Pick a date
-      </Button>
-      <div className="flex flex-wrap items-start justify-center gap-10">
+        <h1 className="max-w-sm p-4 mx-auto mt-5 text-5xl font-light border-b-2 border-gray-200 font-display">
+          Global Stats for <nobr>COVID-19</nobr>
+        </h1>
+        <p className="text-gray-200">
+          The statistics are updated every 15 minutes. Last updated at{" "}
+          {dayjs(history.time).format("HH:mm")}
+        </p>
+        <Modal
+          isOpen={isOpen}
+          onRequestClose={() => setIsOpen(false)}
+          style={{ padding: "30px" }}
+        >
+          <Calendar
+            value={date}
+            onChange={(value) => handleCalendarClick(value)}
+            minDate={new Date(2020, 2, 21)}
+          />
+        </Modal>
+        <Button size="xl" type="primary" click={() => setIsOpen(!isOpen)}>
+          Pick a date
+        </Button>
+      </div>
+      <div
+        ref={resultsRef}
+        className={`${classes.statistics} flex items-center justify-center`}
+      >
         {loading ? <Spinner /> : <StatList history={history} />}
       </div>
-    </div>
+      <ScrollTop />
+    </main>
   );
 }
