@@ -9,10 +9,10 @@ export default function StatCard({ title, number, date, description, color }) {
 
   return (
     <div
-      className={`py-12 px-4 text-center text-white ${bgGradient} rounded-xl shadow-2xl max-w-xs flex flex-col`}
+      className={`py-8 px-4 text-center text-white ${bgGradient} rounded-xl shadow-2xl max-w-xs flex flex-col cursor-default`}
     >
       <h2 className="mb-6 font-bold font-display">{title}</h2>
-      <div className="flex flex-col justify-around flex-1 space-y-4 font-body">
+      <div className="flex flex-col justify-around flex-1 space-y-2 font-body">
         <p className="text-lg font-bold tracking-wider">
           {number ? numberWithSpaces(number) : "No data available"}
         </p>
