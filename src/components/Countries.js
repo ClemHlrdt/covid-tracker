@@ -1,46 +1,44 @@
 import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { fetchCountries } from "../redux/actions/trackerActions";
-import Spinner from "./UI/Spinner/Spinner";
-import Flags from "./UI/Flag";
-import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  fetchCountries,
+  fetchCountryHistory,
+} from "../redux/actions/trackerActions";
 import CountryLookup from "./CountryLookup";
+import StatList from "./StatList";
+import Button from "./UI/Button/Button";
+import Spinner from "./UI/Spinner/Spinner";
 
 export default function Countries() {
   const dispatch = useDispatch();
   const countries = useSelector((state) => state.tracker.countries);
-  const selectedCountries = useSelector(
-    (state) => state.tracker.selectedCountries
-  );
+  const countryHistory = useSelector((state) => state.tracker.countryHistory);
   const loading = useSelector((state) => state.apiStatus);
+  const country = useSelector((state) => state.tracker.country);
 
   useEffect(() => {
     dispatch(fetchCountries());
   }, [dispatch]);
 
-  const selectedNames = selectedCountries.options
-    ? selectedCountries.options.map((country) => country.label)
-    : [];
+  useEffect(() => {
+    dispatch(fetchCountryHistory(country));
+  }, [country, dispatch]);
 
-  const currentCountries = countries.filter((country) =>
-    selectedNames.includes(country.name)
-  );
+  let countryList = null;
 
-  let content = (
-    <div className="flex flex-wrap justify-center w-full space-x-7">
-      {currentCountries.map((country) => (
-        <Link key={country.name} to={`/stats/${country.name}`}>
-          <div className="flex flex-col items-center flex-1 px-4 py-4 mb-8 border-2 rounded">
-            <Flags country={country} />
-            <h3>{country.name}</h3>
-          </div>
-        </Link>
-      ))}
-    </div>
-  );
+  if (countryHistory.cases) {
+    countryList = (
+      <div className="my-10 space-y-6">
+        <StatList loading={loading} history={countryHistory} />
+        <Button size="md" type="danger">
+          Load graph
+        </Button>
+      </div>
+    );
+  }
 
   return (
-    <div className="flex flex-col items-center mt-24 text-center">
+    <div className="flex flex-col items-center justify-center mt-12 text-center">
       <h1 className="max-w-sm p-4 mx-auto mt-5 mb-8 text-5xl font-light border-b-2 border-gray-700 font-display">
         Countries
       </h1>
@@ -49,7 +47,7 @@ export default function Countries() {
       ) : (
         <>
           <CountryLookup countries={countries} />
-          {content}
+          {countryList}
         </>
       )}
     </div>

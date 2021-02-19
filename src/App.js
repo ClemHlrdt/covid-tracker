@@ -1,13 +1,11 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Navbar from "./components/Navbar";
-import Global from "./components/Global";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
 import "./App.css";
 import Countries from "./components/Countries";
-import Country from "./components/Country";
+import Global from "./components/Global";
+import Navbar from "./components/Navbar";
 
 function App() {
   return (
@@ -22,7 +20,6 @@ function App() {
             <Route path="/countries">
               <Countries />
             </Route>
-            <Route path="/stats/:country" children={<Country />} />
           </Switch>
         </main>
       </Router>

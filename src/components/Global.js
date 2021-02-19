@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchHistory } from "../redux/actions/trackerActions";
 import dayjs from "dayjs";
@@ -21,31 +21,30 @@ export default function Global() {
   // const [country, setCountry] = useState("All");
   const [isOpen, setIsOpen] = useState(false);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      console.log("fetching...");
-      console.log(dayjs().format("HH:mm:ss"));
-      let day = date;
+  const getHistory = useCallback(
+    (country, day) => {
       if (!day) {
         day = dayjs().format("YYYY-MM-DD");
       }
       const reportDay = formatDateToYearMonthDay(day);
-      dispatch(fetchHistory("All", reportDay));
+      dispatch(fetchHistory(country, reportDay));
+    },
+    [dispatch]
+  );
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      getHistory("All", date);
     }, 600000);
 
     return () => {
       clearInterval(interval);
     };
-  }, []);
+  }, [date, getHistory]);
 
   useEffect(() => {
-    let day = date;
-    if (!day) {
-      day = dayjs().format("YYYY-MM-DD");
-    }
-    const reportDay = formatDateToYearMonthDay(day);
-    dispatch(fetchHistory("All", reportDay));
-  }, [date, dispatch]);
+    getHistory("All", date);
+  }, [date, getHistory]);
 
   const formatDateToYearMonthDay = (date) => {
     return dayjs(date).format("YYYY-MM-DD");
@@ -91,7 +90,13 @@ export default function Global() {
         ref={resultsRef}
         className={`${classes.statistics} flex items-center justify-center`}
       >
-        {loading ? <Spinner /> : <StatList history={history} />}
+        {loading ? (
+          <Spinner />
+        ) : (
+          <div className="my-20">
+            <StatList history={history} />
+          </div>
+        )}
       </div>
       <ScrollTop />
     </main>

@@ -5,7 +5,7 @@ import NoData from "./UI/NoData/NoData";
 
 export default function StatList({ loading, history }) {
   let content = history.cases ? (
-    <div className="grid grid-cols-1 gap-8 mx-auto my-20 auto-rows-max sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+    <div className="grid grid-cols-1 gap-8 mx-auto auto-rows-max sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
       <StatCard
         title="New Infections"
         number={history.cases.new}

@@ -9,15 +9,14 @@ export function loadSelectedCountries(countries) {
   };
 }
 
-// export function loadDailyCases(cases) {
-//   return {
-//     type: types.LOAD_DAILY_CASES,
-//     payload: cases,
-//   };
-// }
+export function loadSelectedCountry(country) {
+  return {
+    type: types.LOAD_SELECTED_COUNTRY,
+    payload: country,
+  };
+}
 
 // THUNKS
-
 export function fetchCountries() {
   return async function (dispatch) {
     dispatch({ type: types.BEGIN_API_CALL });
@@ -47,8 +46,8 @@ export function fetchHistory(country = "All", date = null) {
 
     dispatch({ type: types.BEGIN_API_CALL });
     const { data } = await axios.get("/history", options);
-
     const relevantData = data.response.find((report) => report.cases.new);
+
     if (!relevantData) {
       dispatch({ type: types.NO_CASES_FOUND });
     } else {
@@ -57,14 +56,26 @@ export function fetchHistory(country = "All", date = null) {
   };
 }
 
-// export function fetchStatistics(country = "All") {
-//   return async function (dispatch) {
-//     const options = {
-//       params: { country: country },
-//     };
+export function fetchCountryHistory(country, date = null) {
+  return async function (dispatch) {
+    const options = {
+      params: { country: country, day: date },
+    };
 
-//     const response = await axios.get("/statistics", options);
-//     dispatch({ type: types.BEGIN_API_CALL });
-//     dispatch({ type: types.LOAD_STATISTICS_SUCCESS, payload: response.data });
-//   };
-// }
+    const countryObj = lookup.byCountry(country);
+    dispatch({ type: types.LOAD_COUNTRY_CODE, payload: countryObj });
+
+    dispatch({ type: types.BEGIN_API_CALL });
+    const { data } = await axios.get("/history", options);
+    const relevantData = data.response.find((report) => report.cases.new);
+
+    if (!relevantData) {
+      dispatch({ type: types.NO_CASES_FOUND });
+    } else {
+      dispatch({
+        type: types.LOAD_COUNTRY_HISTORY_SUCCESS,
+        payload: relevantData,
+      });
+    }
+  };
+}

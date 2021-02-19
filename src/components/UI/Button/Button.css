@@ -1,5 +1,5 @@
 .btn {
-  @apply px-4 py-2 mr-4 font-bold rounded-lg disabled:opacity-70 disabled:cursor-not-allowed;
+  @apply px-4 py-2 mr-4 rounded-lg disabled:opacity-70 disabled:cursor-not-allowed;
 }
 /* Types */
 .btn-primary {

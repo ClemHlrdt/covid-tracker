@@ -15,10 +15,22 @@ function trackerReducer(state = initialState, action) {
         history: action.payload,
       };
 
+    case types.LOAD_COUNTRY_HISTORY_SUCCESS:
+      return {
+        ...state,
+        countryHistory: action.payload,
+      };
+
     case types.LOAD_SELECTED_COUNTRIES:
       return {
         ...state,
         selectedCountries: action.payload,
+      };
+
+    case types.LOAD_SELECTED_COUNTRY:
+      return {
+        ...state,
+        country: action.payload,
       };
 
     case types.NO_CASES_FOUND:
