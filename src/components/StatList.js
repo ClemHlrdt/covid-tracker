@@ -3,7 +3,7 @@ import StatCard from "./StatCard";
 
 import NoData from "./UI/NoData/NoData";
 
-export default function StatList({ loading, history }) {
+export default React.memo(function StatList({ history }) {
   let content = history.cases ? (
     <div className="grid grid-cols-1 gap-8 mx-auto auto-rows-max sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
       <StatCard
@@ -54,4 +54,4 @@ export default function StatList({ loading, history }) {
   );
 
   return <>{content}</>;
-}
+});
