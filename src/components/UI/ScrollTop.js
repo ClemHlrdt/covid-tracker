@@ -12,7 +12,7 @@ export default function ScrollTop() {
         fill="none"
         viewBox="0 0 24 24"
         stroke="currentColor"
-        className="fixed h-12 text-gray-700 transition-colors hover:text-gray-200 bottom-5 right-5"
+        className="fixed h-12 text-gray-300 transition-colors hover:text-gray-200 bottom-5 right-5"
       >
         <path
           strokeLinecap="round"

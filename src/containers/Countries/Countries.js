@@ -30,9 +30,6 @@ export default function Countries() {
     countryList = (
       <div className="my-10 space-y-6">
         <StatList loading={loading} history={countryHistory} />
-        <Button size="md" type="danger">
-          Load graph
-        </Button>
       </div>
     );
   }

@@ -53,5 +53,5 @@ export default function StatList({ loading, history }) {
     <NoData />
   );
 
-  return <div>{content}</div>;
+  return <>{content}</>;
 }
