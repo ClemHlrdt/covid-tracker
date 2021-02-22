@@ -1,13 +1,13 @@
 import React, { useEffect, useState, useRef, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchHistory } from "../redux/actions/trackerActions";
+import { fetchHistory } from "../../redux/actions/trackerActions";
 import dayjs from "dayjs";
 
 import { Calendar, Modal } from "react-rainbow-components";
-import Spinner from "./UI/Spinner/Spinner";
-import Button from "./UI/Button/Button";
-import StatList from "./StatList";
-import ScrollTop from "./UI/ScrollTop";
+import Spinner from "../../components/UI/Spinner/Spinner";
+import Button from "../../components/UI/Button/Button";
+import StatList from "../../components/StatList";
+import ScrollTop from "../../components/UI/ScrollTop";
 import classes from "./Global.module.css";
 
 export default function Global() {

@@ -3,8 +3,8 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
-import Countries from "./components/Countries";
-import Global from "./components/Global";
+import Countries from "./containers/Countries/Countries";
+import Global from "./containers/Global/Global";
 import Navbar from "./components/Navbar";
 
 function App() {

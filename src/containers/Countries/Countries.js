@@ -3,11 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   fetchCountries,
   fetchCountryHistory,
-} from "../redux/actions/trackerActions";
-import CountryLookup from "./CountryLookup";
-import StatList from "./StatList";
-import Button from "./UI/Button/Button";
-import Spinner from "./UI/Spinner/Spinner";
+} from "../../redux/actions/trackerActions";
+import CountryLookup from "../../components/CountryLookup";
+import StatList from "../../components/StatList";
+import Button from "../../components/UI/Button/Button";
+import Spinner from "../../components/UI/Spinner/Spinner";
 
 export default function Countries() {
   const dispatch = useDispatch();
