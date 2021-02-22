@@ -6,6 +6,7 @@ import "./App.css";
 import Countries from "./containers/Countries/Countries";
 import Global from "./containers/Global/Global";
 import Navbar from "./components/Navbar";
+import NotFound from "./components/NotFound/NotFound";
 
 function App() {
   return (
@@ -19,6 +20,9 @@ function App() {
             </Route>
             <Route path="/countries">
               <Countries />
+            </Route>
+            <Route path="*">
+              <NotFound />
             </Route>
           </Switch>
         </main>
