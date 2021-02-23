@@ -5,11 +5,11 @@ import advancedFormat from "dayjs/plugin/advancedFormat";
 dayjs.extend(advancedFormat);
 
 export default function StatCard({ title, number, date, description, color }) {
-  const bgGradient = `bg-gradient-to-br from-${color}-400 via-${color}-500 to-${color}-500`;
+  // const bgGradient = `bg-gradient-to-br from-${color}-400 via-${color}-500 to-${color}-500`;
 
   return (
     <article
-      className={`py-8 px-4 text-center text-white ${bgGradient} rounded-xl shadow-2xl max-w-xs flex flex-col cursor-default`}
+      className={`py-8 px-4 text-center text-white bg-red-500 rounded-xl shadow-2xl max-w-xs flex flex-col cursor-default`}
     >
       <h4 className="mb-4 font-bold font-display">{title}</h4>
       <div className="flex flex-col justify-around flex-1 space-y-2 font-body">
