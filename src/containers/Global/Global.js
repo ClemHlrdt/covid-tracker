@@ -2,18 +2,20 @@ import React, { useEffect, useState, useRef, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchHistory } from "../../redux/actions/trackerActions";
 import dayjs from "dayjs";
+import DayPicker from "react-day-picker";
+import "react-day-picker/lib/style.css";
 
-import { Calendar, Modal } from "react-rainbow-components";
 import Spinner from "../../components/UI/Spinner/Spinner";
 import Button from "../../components/UI/Button/Button";
 import StatList from "../../components/StatList";
 import ScrollTop from "../../components/UI/ScrollTop";
+import Modal from "../../components/UI/Modal/Modal";
 import classes from "./Global.module.css";
 
 export default function Global() {
   let resultsRef = useRef();
   const dispatch = useDispatch();
-  // const countries = useSelector((state) => state.tracker.countries);
+
   const { history } = useSelector((state) => state.tracker);
   const loading = useSelector((state) => state.apiStatus);
   // local state for calendar & country input
@@ -71,15 +73,10 @@ export default function Global() {
           The statistics are updated every 15 minutes. Last updated at{" "}
           {dayjs(history.time).format("HH:mm")}
         </p>
-        <Modal
-          isOpen={isOpen}
-          onRequestClose={() => setIsOpen(false)}
-          style={{ padding: "30px" }}
-        >
-          <Calendar
-            value={date}
-            onChange={(value) => handleCalendarClick(value)}
-            minDate={new Date(2020, 2, 21)}
+        <Modal show={isOpen} modalClosed={() => setIsOpen(false)}>
+          <DayPicker
+            onDayClick={handleCalendarClick}
+            style={{ background: "white", color: "black" }}
           />
         </Modal>
         <Button size="md" type="primary" click={() => setIsOpen(!isOpen)}>

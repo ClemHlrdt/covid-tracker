@@ -1,13 +1,12 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import CountryLookup from "../../components/CountryLookup";
+import StatList from "../../components/StatList";
+import Spinner from "../../components/UI/Spinner/Spinner";
 import {
   fetchCountries,
   fetchCountryHistory,
 } from "../../redux/actions/trackerActions";
-import CountryLookup from "../../components/CountryLookup";
-import StatList from "../../components/StatList";
-import Button from "../../components/UI/Button/Button";
-import Spinner from "../../components/UI/Spinner/Spinner";
 import classes from "./Countries.module.css";
 
 export default function Countries() {
@@ -42,6 +41,7 @@ export default function Countries() {
         <h1 className="max-w-sm p-4 mx-auto mt-5 mb-8 text-5xl font-light tracking-wide text-white border-b-2 border-gray-100 font-display">
           Countries
         </h1>
+
         {loading < 0 || countries.length === 0 ? (
           <Spinner />
         ) : (
