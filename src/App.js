@@ -5,7 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 import Countries from "./containers/Countries/Countries";
 import Global from "./containers/Global/Global";
-import Navbar from "./components/Navbar";
+import Navbar from "./components/Navbar/Navbar";
 import NotFound from "./components/NotFound/NotFound";
 
 function App() {

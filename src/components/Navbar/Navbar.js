@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
+import classes from "./Navbar.module.css";
+
 export default function Navbar() {
   const [navbarOpen, setNavbarOpen] = useState(false);
   return (
-    <nav className="fixed top-0 z-30 flex flex-wrap items-center justify-between w-full px-2 py-3 navbar-expand-lg">
+    <nav
+      className={`${classes.Navbar} fixed top-0 z-30 flex flex-wrap items-center justify-between w-full px-2 py-3 navbar-expand-lg`}
+    >
       <div className="container flex flex-wrap items-center justify-between px-4 mx-auto">
         <div className="relative flex justify-between w-full lg:w-auto lg:static lg:block lg:justify-start">
           <Link
