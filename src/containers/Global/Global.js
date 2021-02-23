@@ -64,10 +64,10 @@ export default function Global() {
       <div
         className={`${classes.jumbotron} flex flex-col items-center justify-center px-12 space-y-8 text-center text-white bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500`}
       >
-        <h1 className="max-w-sm p-4 mx-auto mt-5 text-5xl font-light border-b-2 border-gray-200 font-display">
+        <h1 className="max-w-sm p-4 mx-auto mt-5 text-4xl font-light tracking-wide border-b-2 border-gray-200 font-display">
           Global Stats for <nobr>COVID-19</nobr>
         </h1>
-        <p className="text-gray-200">
+        <p className="text-gray-300">
           The statistics are updated every 15 minutes. Last updated at{" "}
           {dayjs(history.time).format("HH:mm")}
         </p>
@@ -82,7 +82,7 @@ export default function Global() {
             minDate={new Date(2020, 2, 21)}
           />
         </Modal>
-        <Button size="xl" type="primary" click={() => setIsOpen(!isOpen)}>
+        <Button size="md" type="primary" click={() => setIsOpen(!isOpen)}>
           Pick a date
         </Button>
       </div>
