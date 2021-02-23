@@ -5,8 +5,6 @@ import advancedFormat from "dayjs/plugin/advancedFormat";
 dayjs.extend(advancedFormat);
 
 export default function StatCard({ title, number, date, description, color }) {
-  const bgGradient = `bg-gradient-to-br from-${color}-400 via-${color}-500 to-${color}-500`;
-
   const generateGradientBackground = (color) => {
     switch (color) {
       case "red":
