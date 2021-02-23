@@ -8,6 +8,7 @@ import CountryLookup from "../../components/CountryLookup";
 import StatList from "../../components/StatList";
 import Button from "../../components/UI/Button/Button";
 import Spinner from "../../components/UI/Spinner/Spinner";
+import classes from "./Countries.module.css";
 
 export default function Countries() {
   const dispatch = useDispatch();
@@ -35,18 +36,21 @@ export default function Countries() {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center mt-12 text-center">
-      <h1 className="max-w-sm p-4 mx-auto mt-5 mb-8 text-5xl font-light border-b-2 border-gray-700 font-display">
-        Countries
-      </h1>
-      {loading < 0 || countries.length === 0 ? (
-        <Spinner />
-      ) : (
-        <>
-          <CountryLookup countries={countries} />
-          {countryList}
-        </>
-      )}
+    <div className="relative min-h-full">
+      <div className={classes.Countries}></div>
+      <div className="relative z-10 flex flex-col items-center min-h-full pt-24 text-center">
+        <h1 className="max-w-sm p-4 mx-auto mt-5 mb-8 text-5xl font-light tracking-wide text-white border-b-2 border-gray-100 font-display">
+          Countries
+        </h1>
+        {loading < 0 || countries.length === 0 ? (
+          <Spinner />
+        ) : (
+          <>
+            <CountryLookup countries={countries} />
+            {countryList}
+          </>
+        )}
+      </div>
     </div>
   );
 }

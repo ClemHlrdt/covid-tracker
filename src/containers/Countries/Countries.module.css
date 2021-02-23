@@ -1,0 +1,11 @@
+.Countries {
+  width: 100%;
+  position: absolute;
+  background: linear-gradient(180deg, #c34342, #c24141);
+  z-index: 0;
+  clip-path: polygon(0 0, 100% 0%, 100% 52%, 0 80%);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+}
