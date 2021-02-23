@@ -13,7 +13,7 @@ function App() {
     <div className="relative h-screen">
       <Router>
         <Navbar />
-        <main className="h-full mx-auto mt-16">
+        <main className="h-full mx-auto">
           <Switch>
             <Route path="/" exact>
               <Global />

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export default function Navbar() {
   const [navbarOpen, setNavbarOpen] = useState(false);
   return (
-    <nav className="fixed top-0 z-10 flex flex-wrap items-center justify-between w-full px-2 py-3 mb-3 bg-gradient-to-r from-red-400 via-red-500 to-red-600 navbar-expand-lg">
+    <nav className="fixed top-0 z-30 flex flex-wrap items-center justify-between w-full px-2 py-3 navbar-expand-lg">
       <div className="container flex flex-wrap items-center justify-between px-4 mx-auto">
         <div className="relative flex justify-between w-full lg:w-auto lg:static lg:block lg:justify-start">
           <Link
