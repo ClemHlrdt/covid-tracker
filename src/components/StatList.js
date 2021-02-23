@@ -17,7 +17,7 @@ export default React.memo(function StatList({ history }) {
         title="Active cases"
         number={history.cases.active}
         date={history.day}
-        description="Number of actives cases of COVID-19"
+        description="Number of active cases of COVID-19"
         color="red"
       />
       <StatCard
