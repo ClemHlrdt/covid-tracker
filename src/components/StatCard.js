@@ -8,10 +8,10 @@ export default function StatCard({ title, number, date, description, color }) {
   const bgGradient = `bg-gradient-to-br from-${color}-400 via-${color}-500 to-${color}-500`;
 
   return (
-    <div
+    <article
       className={`py-8 px-4 text-center text-white ${bgGradient} rounded-xl shadow-2xl max-w-xs flex flex-col cursor-default`}
     >
-      <h2 className="mb-6 font-bold font-display">{title}</h2>
+      <h4 className="mb-4 font-bold font-display">{title}</h4>
       <div className="flex flex-col justify-around flex-1 space-y-2 font-body">
         <p className="text-lg font-bold tracking-wider">
           {number ? numberWithSpaces(number) : "No data available"}
@@ -21,6 +21,6 @@ export default function StatCard({ title, number, date, description, color }) {
         </p>
         <p className="text-xs">{description}</p>
       </div>
-    </div>
+    </article>
   );
 }
