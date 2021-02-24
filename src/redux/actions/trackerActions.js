@@ -90,6 +90,7 @@ export function fetchCountryHistory(country, date = null) {
 
     dispatch({ type: types.BEGIN_API_CALL });
     const { data } = await axios.get("/history", options);
+    console.log(options);
     const relevantData = data.response.find((report) => report.cases.new);
 
     if (!relevantData) {

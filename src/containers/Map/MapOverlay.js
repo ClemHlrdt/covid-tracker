@@ -30,7 +30,7 @@ export default function MapOverlay({ results }) {
     );
 
   return (
-    <div className="absolute flex flex-col max-w-xs max-w-sm px-4 py-8 text-center text-white bg-gray-900 shadow-2xl cursor-default left-10 bottom-10 z-500 rounded-xl">
+    <div className="absolute flex flex-col max-w-sm px-4 py-8 text-center text-white bg-gray-900 shadow-2xl cursor-default left-10 bottom-10 z-500 rounded-xl">
       {content}
     </div>
   );

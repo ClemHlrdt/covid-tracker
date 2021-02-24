@@ -26,8 +26,10 @@ export function fetchCountry(position) {
     dispatch({ type: types.BEGIN_API_CALL });
     const { data } = await axios.get("/reverse", options);
     let res = null;
-    if (data.address.country) {
+    console.log(data);
+    if (!data.error) {
       res = data.address.country;
+      console.log(res);
     }
     // const country = "Poland";
 
