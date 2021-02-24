@@ -7,7 +7,11 @@ module.exports = {
       body: ["Open Sans", "sans-serif"],
       sans: ["Open Sans", "sans-serif"],
     },
-    extend: {},
+    extend: {
+      zIndex: {
+        500: "500",
+      },
+    },
   },
   variants: {
     extend: {

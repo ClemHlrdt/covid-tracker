@@ -7,6 +7,7 @@ import Countries from "./containers/Countries/Countries";
 import Global from "./containers/Global/Global";
 import Navbar from "./components/Navbar/Navbar";
 import NotFound from "./components/NotFound/NotFound";
+import Map from "./containers/Map/Map";
 
 function App() {
   return (
@@ -20,6 +21,9 @@ function App() {
             </Route>
             <Route path="/countries">
               <Countries />
+            </Route>
+            <Route path="*">
+              <Map />
             </Route>
             <Route path="*">
               <NotFound />

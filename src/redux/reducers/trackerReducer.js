@@ -1,7 +1,7 @@
 import * as types from "../actions/actionTypes";
 import initialState from "./initialState";
 
-function trackerReducer(state = initialState, action) {
+function trackerReducer(state = initialState.tracker, action) {
   switch (action.type) {
     case types.LOAD_COUNTRIES_SUCCESS:
       return {
@@ -13,6 +13,12 @@ function trackerReducer(state = initialState, action) {
       return {
         ...state,
         history: action.payload,
+      };
+
+    case types.LOAD_STATISTICS_SUCCESS:
+      return {
+        ...state,
+        statistics: action.payload,
       };
 
     case types.LOAD_COUNTRY_HISTORY_SUCCESS:

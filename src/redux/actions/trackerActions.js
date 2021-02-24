@@ -56,12 +56,35 @@ export function fetchHistory(country = "All", date = null) {
   };
 }
 
+export function fetchStatistics(country = "All", date = null) {
+  return async function (dispatch) {
+    // const options = {
+    //   params: { country: country, day: date },
+    // };
+
+    // if (country !== "All") {
+    //   const countryObj = lookup.byCountry(country);
+    //   dispatch({ type: types.LOAD_COUNTRY_CODE, payload: countryObj });
+    // }
+
+    dispatch({ type: types.BEGIN_API_CALL });
+    // const { data } = await axios.get("/statistics", options);
+    const { data } = await axios.get("/statistics");
+    const relevantData = data.response;
+
+    if (!relevantData) {
+      dispatch({ type: types.NO_CASES_FOUND });
+    } else {
+      dispatch({ type: types.LOAD_STATISTICS_SUCCESS, payload: relevantData });
+    }
+  };
+}
+
 export function fetchCountryHistory(country, date = null) {
   return async function (dispatch) {
     const options = {
       params: { country: country, day: date },
     };
-
     const countryObj = lookup.byCountry(country);
     dispatch({ type: types.LOAD_COUNTRY_CODE, payload: countryObj });
 
