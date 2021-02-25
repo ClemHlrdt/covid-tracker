@@ -1,6 +1,7 @@
 import React, { Suspense } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
+import ReactGA from "react-ga";
 
 import Navbar from "./components/Navbar/Navbar";
 
@@ -10,6 +11,9 @@ const Global = React.lazy(() => import("./containers/Global/Global"));
 const Countries = React.lazy(() => import("./containers/Countries/Countries"));
 const Map = React.lazy(() => import("./containers/Map/Map"));
 const NotFound = React.lazy(() => import("./components/NotFound/NotFound"));
+
+const TRACKING_ID = "UA-154386020-1";
+ReactGA.initialize(TRACKING_ID);
 
 function App() {
   return (
