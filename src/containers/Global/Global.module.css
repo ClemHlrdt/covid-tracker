@@ -13,7 +13,7 @@
       rgba(41, 41, 44, 0.52),
       rgba(117, 19, 93, 0.73)
     ),
-    url(https://images.unsplash.com/photo-1583324113626-70df0f4deaab?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1189&q=80);
+    url(../../images/covid.webp);
 }
 
 .statistics {
@@ -22,5 +22,5 @@
       rgba(29, 38, 113, 0.52),
       rgba(195, 55, 100, 0.73)
     ),
-    url(https://images.unsplash.com/photo-1584291527908-033f4d6542c8?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1225&q=80);
+    url(../../images/dashboard.webp);
 }
