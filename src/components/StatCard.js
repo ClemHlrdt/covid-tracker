@@ -30,7 +30,7 @@ export default function StatCard({ title, number, date, description, color }) {
         color
       )} rounded-xl shadow-2xl max-w-xs flex flex-col cursor-default`}
     >
-      <h4 className="mb-4 font-bold font-display">{title}</h4>
+      <h1 className="mb-4 font-bold font-display">{title}</h1>
       <div className="flex flex-col justify-around flex-1 space-y-2 font-body">
         <p className="text-lg font-bold tracking-wider">
           {number ? numberWithSpaces(number) : "No data available"}

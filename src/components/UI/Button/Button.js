@@ -10,6 +10,7 @@ export default function Button({ click, children, size, type, disabled }) {
 
   return (
     <button
+      aria-label={children}
       onClick={click}
       className={classnames("btn", bSize, bType)}
       disabled={disabled}
@@ -22,4 +23,5 @@ export default function Button({ click, children, size, type, disabled }) {
 Button.propTypes = {
   size: PropTypes.oneOf(["xs", "md", "xl"]),
   type: PropTypes.oneOf(["primary", "secondary", "success", "danger"]),
+  children: PropTypes.string.isRequired,
 };
